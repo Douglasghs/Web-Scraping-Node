@@ -1,15 +1,15 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8081;
 const server = require("http").createServer(app);
 const puppeteer = require('puppeteer');
 
 app.get("/", async (req, res) =>{
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({headless: true});
     const page = await browser.newPage();
-    await page.goto('https://www.google.com.br/');
+    await page.goto('https://pt-br.facebook.com/');
   
-    await page.$$eval('input[name="q"]', el => el.value = "Youtube");
+    await page.type(id="#email", "lalallalala@facebook.com");
     //await page.click('input[name="btnK"]')
 
     await page.screenshot({ path: 'example.png' });
