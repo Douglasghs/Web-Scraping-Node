@@ -19,6 +19,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "http": "0.0.1-security",
+    "mysql2": "^2.3.0",
     "nodemon": "^2.0.12",
     "puppeteer": "^10.2.0"
   }
