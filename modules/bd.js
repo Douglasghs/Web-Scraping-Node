@@ -5,12 +5,14 @@ const criacaoBD = mysql.createConnection({
     password: "147258"
 });
 
+let TiposMoney = ['Dolar'];
+
 // Fazendo conexão com a base de dados, passando credenciais citadas logo acima;
-criacaoBD.connect((erro) =>{
-    if(erro){
+criacaoBD.connect((erro) => {
+    if (erro) {
         console.log("ERRO: connection database : " + erro);
     }
-    else{
+    else {
         console.log("connection do banco de dadois com sucesso");
     }
 });
@@ -18,30 +20,30 @@ criacaoBD.connect((erro) =>{
 
 // Fazendo a Query de criação da base de dados do programa;
 criacaoBD.query("create database if not exists fuso_horarios", (erro) => {
-    if(erro){
+    if (erro) {
         console.log("ERRO: Create database : " + erro);
     }
-    else{
+    else {
         console.log("Criação do banco de dados feita com sucesso");
     }
 });
 
 
 // Criando tabela referente ao Dólar
-criacaoBD.query("use fuso_horarios", (err) =>{
-    if(err){
-        console.log("ERRO : use fuso_horarios : "+ err);
+criacaoBD.query("use fuso_horarios", (err) => {
+    if (err) {
+        console.log("ERRO : use fuso_horarios : " + err);
     }
-    else{
-        criacaoBD.query("create table IF NOT EXISTS Dolar(valor integer not null," 
-                        +"Data date NOT NULL)", (erro, result) =>{
-            if(erro){
-                console.log("ERRO : Create table Dólar : "+ erro);
-            }
-            else{
-                console.log("Tabela Dólar crianda com sucesso \n" +result);
-            }
-        })
+    else {
+        criacaoBD.query("create table IF NOT EXISTS dolar (valor integer not null,"
+                + "Data date NOT NULL)", (erro, result) => {
+                    if (erro) {
+                        console.log("ERRO : Create table Dólar : " + erro);
+                    }
+                    else {
+                        console.log("Tabela dolar crianda com sucesso \n" + result);
+                    }
+                })
     }
 })
 

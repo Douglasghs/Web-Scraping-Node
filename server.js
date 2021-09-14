@@ -2,44 +2,36 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 8081;
 const server = require("http").createServer(app);
-const puppeteer = require('puppeteer');
 
 const Modules_BD = require('./modules/bd');
 
-app.get("/", async (req, res) =>{
-    const browser = await puppeteer.launch({
-        headless: true,
-        defaultViewport: null,
-        args: ['--start-maximixed']
-    });
-    const page = await browser.newPage();
-    await page.goto('https://www.google.com.br/', {waitUntil: 'networkidle0'});
-  
-    await page.type("body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb > div > div.a4bIc > input", "dolar");
-    //const form = await page.$('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b');
-    //await form.$eval(form => form.click());
+// Config arquivos estáticos
+const path = require('path');
+app.use(express.static(path.join(__dirname, "/public")));
 
-    const cssSelector = await page.evaluate(() => document.cssSelector('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'))
-    const isElement = async (page, cssSelector) =>{
-        let visible = true;
-        await page
-        .waitForSelector(cssSelector, {visible: true, timeout: 2000})
-        .catch(() =>{
-            visible = false;
-        });
-        return visible;
+// Config Handlebars
+const handlebars = require('express-handlebars');
+app.engine('handlebars', handlebars({
+    defaultLayout: 'main',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
     }
+}));
+app.set('view engine', 'handlebars');
 
-    let loadMoreVisible = await isElementVisible(page, cssSelector);
-    while(loadMoreVisible){
-        await page.click(cssSelector);
-        loadMoreVisible = await isElementVisible(page, cssSelector);
-    }
+// Config Body-parser
+const parser = require('body-parser');
+app.use(parser.urlencoded({extended: false}));
+app.use(parser.json());
 
 
-    await page.screenshot({ path: 'example.png' });
-    await browser.close();
-})
+// Definindo rotas
+const router = express.Router();
+const Controller_Bot = require("./Controller/Bot");
+app.get("/BotGetValues", Controller_Bot.BotStart);
+const Controller_Inicial = require('./Controller/inicial');
+app.get("/", Controller_Inicial.Getonicial);
 
 server.listen(port, () =>{
     console.log("Servidor rodando na porta :"+ port);

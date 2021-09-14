@@ -1,0 +1,11 @@
+body{
+    background-color: black;
+}
+
+#esquerda{
+    float: left;
+    width: 45%;
+    height:  600px;
+    margin-left: 4%;
+    border: 1px solid red;
+}
