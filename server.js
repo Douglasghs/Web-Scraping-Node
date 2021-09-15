@@ -29,7 +29,7 @@ app.use(parser.json());
 // Definindo rotas
 const router = express.Router();
 const Controller_Bot = require("./Controller/Bot");
-app.get("/BotGetValues", Controller_Bot.BotStart);
+app.get("/BotGetValues/:money", Controller_Bot.BotStart);
 const Controller_Inicial = require('./Controller/inicial');
 app.get("/", Controller_Inicial.Getonicial);
 
