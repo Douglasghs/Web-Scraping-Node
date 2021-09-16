@@ -1,2 +1,3 @@
 -- fazer front 
 -- continuar requisicão do botão de pesquisa
+-- ver lentidão depois de fazer a requisicão do butão de pesquisa
