@@ -32,6 +32,8 @@ const Controller_Bot = require("./Controller/Bot");
 app.get("/BotGetValues/:money", Controller_Bot.BotStart);
 const Controller_Inicial = require('./Controller/inicial');
 app.get("/", Controller_Inicial.Getonicial);
+const Controller_AddDado = require("./Controller/salvarDado");
+app.get("/AddDado/:valor/:data");
 
 server.listen(port, () =>{
     console.log("Servidor rodando na porta :"+ port);

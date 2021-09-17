@@ -14,8 +14,8 @@ exports.BotStart = async (req, res) =>{
     const form = await page.$('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b');
     await form.evaluate(form => form.click());
 
-    
-
     await page.screenshot({ path: 'example.png' });
     await browser.close();
+    
+    res.status(204).json("Executado com sucesso");
 }

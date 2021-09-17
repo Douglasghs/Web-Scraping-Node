@@ -10,7 +10,7 @@ body{
     margin-top: 4%;
     border-radius: 10px;
     background-color: darkgray;
-    border: 1px solid red;
+    border: 1px solid darkred;
 }
 
 #Moneys{
@@ -41,5 +41,71 @@ body{
     height: 200px;
     margin-left: 2%;
     margin-top: 4%;
-    border: 1px solid red;
+    border-radius: 10px;
+    background-color: darkgray;
+    border: 1px solid darkred;
+}
+
+#direita01{
+    float: left;
+    width: 60%;
+    height: 70%;
+    margin-top: 1%;
+    margin-left: 1%;
+    border: 1px solid black;
+
+    text-align: center;
+    font-size: 800%;
+    font-weight: bolder;
+    font-style: normal;
+    color: darkred;
+}
+
+#direita02{
+    float: left;
+    width: 36%;
+    height: 70%;
+    margin-top: 1%;
+    margin-left: 1%;
+    border: 1px solid black;
+
+    text-align: center;
+    font-size: 650%;
+    font-weight: bolder;
+    font-style: normal;
+    color: darkred;
+}
+
+#direita03{
+    float: left;
+    width: 97.5%;
+    height: 15%;
+    margin-top: 1%;
+    margin-left: 1%;
+    border: 1px solid black;
+
+    text-align: center;
+    font-size: 200%;
+    font-weight: bolder;
+    font-style: normal;
+    color: darkred;
+}
+
+#Baixo{
+    float: left;
+    width: 30%;
+    height: 50px;
+    margin-top: 5%;
+    margin-left: 35%;
+}
+
+#BD_SalvarBD{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid darkred;
+
+    text-align: center;
+    font-weight: bolder;
+    font-size: 130%;
 }
