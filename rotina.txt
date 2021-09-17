@@ -1,3 +1,1 @@
--- continuar requisicão do botão de pesquisa
--- terminar os locais de valores para terminar a inserção de dados
 -- terminar bot para jogar valores na tela
