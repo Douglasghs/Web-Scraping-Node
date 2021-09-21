@@ -1,8 +1,27 @@
 const puppeteer = require('puppeteer');
-//const Modules_BD = require('./modules/bd');
+const Modules_BD = require('../modules/bd');
 
 exports.BotStart = async (req, res) => {
     try {
+
+        // Criando tabela referente a moeda escolhida
+        Modules_BD.query("use fuso_horarios", (err) => {
+            if (err) {
+                console.log("ERRO : use fuso_horarios : " + err);
+            }
+            else {
+                Modules_BD.query(`create table IF NOT EXISTS ${req.params.money} (valor integer not null,
+                    Data date NOT NULL)`, (erro, result) => {
+                        if (erro) {
+                            console.log(`ERRO : Create table ${req.params.money} : ` + erro);
+                        }
+                        else {
+                            console.log(`Tabela ${req.params.money} crianda com sucesso \n` + result);
+                        }
+                    })
+            }
+        })
+
         const browser = await puppeteer.launch({
             headless: true,
             defaultViewport: null,

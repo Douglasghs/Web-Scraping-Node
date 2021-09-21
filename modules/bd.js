@@ -29,23 +29,4 @@ criacaoBD.query("create database if not exists fuso_horarios", (erro) => {
 });
 
 
-// Criando tabela referente ao Dólar
-criacaoBD.query("use fuso_horarios", (err) => {
-    if (err) {
-        console.log("ERRO : use fuso_horarios : " + err);
-    }
-    else {
-        criacaoBD.query("create table IF NOT EXISTS dolar (valor integer not null,"
-                + "Data date NOT NULL)", (erro, result) => {
-                    if (erro) {
-                        console.log("ERRO : Create table Dólar : " + erro);
-                    }
-                    else {
-                        console.log("Tabela dolar crianda com sucesso \n" + result);
-                    }
-                })
-    }
-})
-
-
 module.exports = criacaoBD;
