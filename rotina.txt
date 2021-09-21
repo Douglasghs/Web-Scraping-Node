@@ -1,1 +1,3 @@
--- terminar bot para jogar valores na tela
+-- passar valores para a criação das tabelas
+-- passar valor para o front 
+-- corrigir bug apoós sessão de erro
