@@ -1,3 +1,4 @@
--- passar valores para a criação das tabelas
 -- passar valor para o front 
 -- corrigir bug apoós sessão de erro
+-- ver os valores com erros na pegada dos dados
+-- erro na passada do novo site como nome da tabela
