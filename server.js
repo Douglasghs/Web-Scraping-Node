@@ -35,6 +35,10 @@ app.get("/", Controller_Inicial.Getonicial);
 const Controller_AddDado = require("./Controller/salvarDado");
 app.get("/AddDado/:valor/:data");
 
-server.listen(port, () =>{
-    console.log("Servidor rodando na porta :"+ port);
-})
+try {
+    server.listen(port, () =>{
+        console.log("Servidor rodando na porta :"+ port);
+    })
+} catch (error) {
+    console.log("lISTEN SERVER : ERRO : "+ error);
+}

@@ -1,3 +1,7 @@
 exports.Getonicial = (req,res) =>{
-    res.render("introducao.handlebars");
+    try {
+        res.render("introducao.handlebars");
+    } catch (error) {
+        console.log("Controller_Inicial : ERRO: " + error);
+    }
 }

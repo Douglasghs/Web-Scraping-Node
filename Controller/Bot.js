@@ -28,21 +28,19 @@ exports.BotStart = async (req, res) => {
             args: ['--start-maximixed']
         });
         const page = await browser.newPage();
-        await page.goto('https://economia.uol.com.br/cotacoes/', { waitUntil: 'networkidle0' });
+        await page.goto('https://www.google.com.br/', { waitUntil: 'networkidle0' });
 
-        const form = await page.$('body > section.currency-exchange > section > div > div > div.currency-field1 > div > div > div');
+        await page.type("body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb > div > div.a4bIc > input", `${req.params.money}`);
+        await page.waitForTimeout(4000);
+        const form = await page.$('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b');
         await page.waitForTimeout(4000);
         await form.evaluate(form => form.click());
         await page.waitForTimeout(4000);
-        await page.type("body > section.currency-exchange > section > div > div > div.currency-field1 > div > div > div > div > div > input", `${req.params.money}`);
-        await page.waitForTimeout(4000);
-        await page.keyboard.press('Enter');
-        await page.waitForTimeout(4000);
 
-        const valorA = await page.$eval("body > section.currency-exchange > section > div > div > div.currency-field2 > div > input", el => el.textContent);
+        const valorA = await page.$eval("#knowledge-currency__updatable-data-column > div.b1hJbf > div.dDoNo.ikb4Bb.gsrt.gzfeS > span.DFlfde.SwHCTb", el => el.textContent);
         console.log(valorA);
 
-        await page.screenshot({ path: 'example.png' });
+        //await page.screenshot({ path: 'example.png' });
         await browser.close();
 
         res.status(204).json("Executado com sucesso");

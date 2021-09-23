@@ -1,4 +1,3 @@
 -- passar valor para o front 
 -- corrigir bug apoós sessão de erro
--- ver os valores com erros na pegada dos dados
--- erro na passada do novo site como nome da tabela
+-- IMPLEMENTAR SOCKET.IO PARA PASSAR VALOR PARA O FRONT
